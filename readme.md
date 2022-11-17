@@ -57,26 +57,26 @@ ADMIN
 
 USER
 
-    *userAuth*
-    http://65.0.102.151:3001/api/auth/userlogin
-    http://65.0.102.151:3001/api/auth/userlogout
+    userAuth
+        (http://65.0.102.151:3001/api/auth/userlogin)
+        [http://65.0.102.151:3001/api/auth/userlogout]  (http://65.0.102.151:3001/api/auth/userlogout)
     
-    ***userPrivilages**
-    http://65.0.102.151:3001/api/user/readUser  (to fetch password)
-    http://65.0.102.151:3001/api/user/modifyUser    (to change password)
+    userPrivilages
+        http://65.0.102.151:3001/api/user/readUser  (to fetch password)
+        http://65.0.102.151:3001/api/user/modifyUser    (to change password)
 
 ADMIN
 
-adminAuth
+    adminAuth
 
-    http://65.0.102.151:3001/api/auth/adminlogin
-    http://65.0.102.151:3001/api/auth/adminlogout
+        http://65.0.102.151:3001/api/auth/adminlogin
+        http://65.0.102.151:3001/api/auth/adminlogout
 
     
-adminPrivilages
+    adminPrivilages
 
-    http://65.0.102.151:3001/api/user/createuser
-    http://65.0.102.151:3001/api/user/readUser
-    http://65.0.102.151:3001/api/user/modifyUser
-    http://65.0.102.151:3001/api/user/deleteuser
+        http://65.0.102.151:3001/api/user/createuser
+        http://65.0.102.151:3001/api/user/readUser
+        http://65.0.102.151:3001/api/user/modifyUser
+        http://65.0.102.151:3001/api/user/deleteuser
 
