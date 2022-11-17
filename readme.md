@@ -58,8 +58,8 @@ ADMIN
 USER
 
     userAuth
-        (http://65.0.102.151:3001/api/auth/userlogin)
-        [http://65.0.102.151:3001/api/auth/userlogout]  (http://65.0.102.151:3001/api/auth/userlogout)
+        http://65.0.102.151:3001/api/auth/userlogin
+        http://65.0.102.151:3001/api/auth/userlogout
     
     userPrivilages
         http://65.0.102.151:3001/api/user/readUser  (to fetch password)
