@@ -1,0 +1,78 @@
+<!-- <!DOCTYPE html> -->
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,minimum-scale=1" />
+  <title>Login</title>
+  <!-- the form awesome library is used to add icons to our form -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" />
+  <!-- include the stylesheet file -->
+  <link href="/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <!-- //Login -->
+  <div class="login">
+    <h1>Admin Login</h1>
+    <label for="adminname">
+      <!-- font awesome icon -->
+      <i class="fas fa-admin"></i>
+    </label>
+    <input value="usernamex8" type="text" id="adminname" name="adminname" placeholder="Username" required />
+    <label for="password">
+      <i class="fas fa-lock"></i>
+    </label>
+    <input value="passwordx8" type="password" id="password" name="password" placeholder="Password" required />
+    <input type="submit" value="Login" id="loginButton" />
+    <div id="loginStatus"></div>
+  </div>
+
+  <script>
+    function checkBiscuits() {
+      if (document.cookie.length > 0) {
+        window.location.replace(`http://65.0.102.151:3001/admin`);
+        //   let biscuits = {}
+        //   const biscuitsArray = document.cookie.split(';')
+        //   biscuitsArray.forEach((biscuit) => {
+        //     const [key, value] = biscuit.trim().split('=')
+        //     biscuits[key] = value
+        //   })
+
+      }
+    }
+    window.onload = checkBiscuits();
+    const log = document.getElementById("loginButton");
+
+    log.addEventListener("click", async () => {
+      const admin = document.getElementById("adminname");
+      const pass = document.getElementById("password");
+      let adminname = admin.value;
+      let password = pass.value;
+      const result = await fetch("http://65.0.102.151:3001/api/auth/adminlogin", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          adminname,
+          password,
+        }),
+      }).then((res) => res.json());
+      if (result.response == 'wrong adminname') {
+        document.getElementById('loginStatus').innerHTML = 'wrong adminname'
+      } if (result.response=='wrong password') { 
+        document.getElementById('loginStatus').innerHTML = 'wrong password'
+      }
+      console.log(result)
+      localStorage.setItem("adminname", result.responseAdminname);
+      localStorage.setItem("name", result.responseName);
+
+      if (result.biscuitStatus == "alreadywed" || result.biscuitStatus == "newlywed") {
+        window.location.replace(`http://65.0.102.151:3001/admin`);
+      }
+    });
+  </script>
+</body>
+
+</html>

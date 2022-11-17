@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Index</title>
+</head>
+
+<body>
+  <h1 id="localname">User</h1>
+
+  <input style="float: right;" type="submit" id="logout" value="logout">
+  <input type="text" id="username" name="username" placeholder="username">
+  <input type="submit" id="getUserbtn" value="Fetch">
+  <br><br>
+  <br><br>
+  <input disabled="" type="text" id="fetchedusername" name="fetchedusername" placeholder="fetchedusername">
+
+  <br><br>
+  <input type="text" id="fetchedpassword" name="fetchedpassword" placeholder="fetchedpassword">
+  <input type="submit" id="editPassword" value="edit password">
+  <div id="status"></div>
+  <br><br>
+  <input disabled="" type="text" id="fetchedname" name="fetchedname" placeholder="fetchedname">
+  <br>
+</body>
+<script>
+  function checkBiscuits() {
+      if (document.cookie.length > 0) {
+        let biscuits = {}
+        const biscuitsArray = document.cookie.split(';')
+        biscuitsArray.forEach((biscuit) => {
+          const [key, value] = biscuit.trim().split('=')
+          biscuits[key] = value
+        })
+        document.getElementById('localname').innerHTML = "Welcome "+localStorage.getItem("name")
+        // localName = localStorage.getItem
+      }if(document.cookie.length < 1){
+        window.location.replace(`http://65.0.102.151:3001/user/login.html`);
+      }
+     
+        console.log(document.cookie.length)
+       
+    }
+    window.onload = checkBiscuits();
+  let userid;
+
+  const status = document.getElementById("status");
+  const editPassword = document.getElementById("editPassword");
+  const uname = document.getElementById("username");
+    uname.value=localStorage.getItem('username')
+  // event at button
+  document.getElementById('getUserbtn').addEventListener("click", async () => {
+    
+
+    let username = uname.value;
+    const result = await fetch("http://65.0.102.151:3001/api/user/readUser", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username,
+      }),
+    }).then((res) => res.json());
+
+    userid = result.result[0].userid;
+
+    const fetchedusername = document.getElementById("fetchedusername");
+    const fetchedpassword = document.getElementById("fetchedpassword");
+    const fetchedname = document.getElementById("fetchedname");
+    fetchedusername.value = localStorage.getItem('username');
+    fetchedpassword.value = result.result[0].password;
+    fetchedname.value = localStorage.getItem('name');
+
+    console.log(result.result[0]);
+    console.log(userid);
+  });
+
+  // event at username input
+
+  //event at password input
+  editPassword.addEventListener("click", async () => {
+    const newPassword = document.getElementById("fetchedpassword");
+
+    let password = newPassword.value;
+
+    const result = await fetch("http://65.0.102.151:3001/api/user/modifyUser", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userid,
+        password
+      }),
+    }).then((res) => res.json());
+
+    status.innerHTML = result.result.info
+  });
+
+  document.getElementById('logout').addEventListener('click', async () => {
+    console.log('logoutclickec')
+    const result = await fetch("http://65.0.102.151:3001/api/auth/userlogout", {
+      method: "get",
+    }).then((res) => res.json());
+    if (result.biscuitStatus !== 'err') {
+      window.location.replace(`http://65.0.102.151:3001/user/login.html`);
+    }
+  })
+
+
+</script>
+
+</html>
