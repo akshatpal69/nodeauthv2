@@ -28,11 +28,11 @@
     USERSESSIONS: sessionid, userid
 
 
->put foreign key on adminid in admionsessions as child,
+*put foreign key on adminid in admionsessions as child,
 
->put foreign key on userid in usersessions as child
+*put foreign key on userid in usersessions as child
 
->put foreign key on userid in logs as child
+*put foreign key on userid in logs as child
 
 
 **STEP5**: `npm start`
