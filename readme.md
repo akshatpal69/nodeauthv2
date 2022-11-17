@@ -1,7 +1,7 @@
-TO RUN PROJECT
-STEP1: npm install
-STEP2: edit the ENV.js as per your environment
-STEP3: make a database with these tables
+# **TO RUN PROJECT**
+**STEP1**: `npm install`
+**STEP2**: edit the ENV.js as per your environment
+**STEP3**: make a database with these tables
 +---------------------+
 | Tables_in_nodelogin |
 +---------------------+
@@ -12,7 +12,7 @@ STEP3: make a database with these tables
 | users               |
 | usersessions        |
 +---------------------+
-with following columns
+**with following columns**
 admins: ADMINID, ADMINNAME, PASSWORD, NAME
 
 adminsessions: SESSIONID, ADMINID
@@ -26,49 +26,49 @@ users: USERID, USERNAME, PASSWORD, NAME
 usersessions: SESSIONID, USERID
 
 
-put foreign key on adminid in admionsessions as child,
-put foreign key on userid in usersessions as child
-put foreign key on userid in logs as child
+>put foreign key on adminid in admionsessions as child,
+>put foreign key on userid in usersessions as child
+>put foreign key on userid in logs as child
 
 
-STEP5: npm test
+**STEP5**: `npm start`
 
 
 
 ********************************************************
-PUBLIC ROUTES
+#PUBLIC ROUTES
 
 user:
-http://localhost/user/login.html
-http://localhost/user/index.html
+http://65.0.102.151:3001/user/login.html
+http://65.0.102.151:3001/user/index.html
 
 
 admin:
-http://localhost/admin/login.html
-http://localhost/admin/index.html
-http://localhost/admin/createuser.html
+http://65.0.102.151:3001/admin/login.html
+http://65.0.102.151:3001/admin/index.html
+http://65.0.102.151:3001/admin/createuser.html
 
 
 
-API ROUTES
+###API ROUTES
 
 user
     *userAuth
-    http://localhost:80/api/auth/userlogin
-    http://localhost:80/api/auth/userlogout
+    http://65.0.102.151:3001/api/auth/userlogin
+    http://65.0.102.151:3001/api/auth/userlogout
     
     *userPrivilages
-    http://localhost:80/api/user/readUser   (to fetch password)
-    http://localhost/api/user/modifyUser    (to change password)
+    http://65.0.102.151:3001/api/user/readUser  (to fetch password)
+    http://65.0.102.151:3001/api/user/modifyUser    (to change password)
 
 admin
     *adminAuth
-    http://localhost:80/api/auth/adminlogin
-    http://localhost:80/api/auth/adminlogout
+    http://65.0.102.151:3001/api/auth/adminlogin
+    http://65.0.102.151:3001/api/auth/adminlogout
 
     *adminPrivilages
-    http://localhost/api/user/createuser
-    http://localhost:80/api/user/readUser
-    http://localhost/api/user/modifyUser
-    http://localhost/api/user/deleteuser
+    http://65.0.102.151:3001/api/user/createuser
+    http://65.0.102.151:3001/api/user/readUser
+    http://65.0.102.151:3001/api/user/modifyUser
+    http://65.0.102.151:3001/api/user/deleteuser
 
