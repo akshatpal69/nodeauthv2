@@ -1,15 +1,15 @@
 # **TO RUN PROJECT**
-**STEP1**: `npm install`
-**STEP2**: edit the ENV.js as per your environment
-**STEP3**: make a database with these tables
+**1**: `npm install`
+**2**: edit the ENV.js as per your environment
+**3**: make a database with these tables
 
-**Tables_in_nodelogin**
-* ADMINS              
-* ADMINSESSIONS       
-* LOGS                
-* USERCOUNT           
-* USERS               
-* USERSESSIONS        
+    -**Tables_in_nodelogin**
+    -* ADMINS              
+    -* ADMINSESSIONS       
+    -* LOGS                
+    -* USERCOUNT           
+    -* USERS               
+    -* USERSESSIONS        
 
 **WITH FOLLOWING COLUMNS**
 
@@ -29,6 +29,7 @@ USERSESSIONS: sessionid, userid
 >put foreign key on adminid in admionsessions as child,
 
 >put foreign key on userid in usersessions as child
+
 >put foreign key on userid in logs as child
 
 
