@@ -2,31 +2,32 @@
 **STEP1**: `npm install`
 **STEP2**: edit the ENV.js as per your environment
 **STEP3**: make a database with these tables
-+---------------------+
-| Tables_in_nodelogin |
-+---------------------+
-| admins              |
-| adminsessions       |
-| logs                |
-| usercount           |
-| users               |
-| usersessions        |
-+---------------------+
-**with following columns**
-admins: ADMINID, ADMINNAME, PASSWORD, NAME
 
-adminsessions: SESSIONID, ADMINID
+**Tables_in_nodelogin**
+* ADMINS              
+* ADMINSESSIONS       
+* LOGS                
+* USERCOUNT           
+* USERS               
+* USERSESSIONS        
 
-logs: USERID, IPADDRESS, TIMESPASSWORDCHANGED, LASTPASSWORDCHANGED, LASTLOGINTIMESTAMP, LASTLOGOUTTIMESTAMP
+**WITH FOLLOWING COLUMNS**
 
-usercount: ID, COUNT
+ADMINS: adminid, adminname, password, name
 
-users: USERID, USERNAME, PASSWORD, NAME
+ADMINSESSIONS: sessionid, adminid
 
-usersessions: SESSIONID, USERID
+LOGS: userid, ipaddress, timespasswordchanged, lastpasswordchanged, lastlogintimestamp, lastlogouttimestamp
+
+USERCOUNT: id, count
+
+USERS: userid, username, password, name
+
+USERSESSIONS: sessionid, userid
 
 
 >put foreign key on adminid in admionsessions as child,
+
 >put foreign key on userid in usersessions as child
 >put foreign key on userid in logs as child
 
@@ -36,7 +37,7 @@ usersessions: SESSIONID, USERID
 
 
 ********************************************************
-#PUBLIC ROUTES
+##PUBLIC ROUTES
 
 user:
 http://65.0.102.151:3001/user/login.html
@@ -50,9 +51,10 @@ http://65.0.102.151:3001/admin/createuser.html
 
 
 
-###API ROUTES
+##API ROUTES
 
 user
+
     *userAuth
     http://65.0.102.151:3001/api/auth/userlogin
     http://65.0.102.151:3001/api/auth/userlogout
