@@ -37,38 +37,44 @@ USERSESSIONS: sessionid, userid
 
 
 ********************************************************
-##PUBLIC ROUTES
+**PUBLIC ROUTES**
 
-user:
-http://65.0.102.151:3001/user/login.html
-http://65.0.102.151:3001/user/index.html
+USER
 
-
-admin:
-http://65.0.102.151:3001/admin/login.html
-http://65.0.102.151:3001/admin/index.html
-http://65.0.102.151:3001/admin/createuser.html
+    http://65.0.102.151:3001/user/login.html
+    http://65.0.102.151:3001/user/index.html
 
 
+ADMIN
 
-##API ROUTES
+    http://65.0.102.151:3001/admin/login.html
+    http://65.0.102.151:3001/admin/index.html
+    http://65.0.102.151:3001/admin/createuser.html
 
-user
 
-    *userAuth
+
+**API ROUTES**
+
+USER
+
+    *userAuth*
     http://65.0.102.151:3001/api/auth/userlogin
     http://65.0.102.151:3001/api/auth/userlogout
     
-    *userPrivilages
+    ***userPrivilages**
     http://65.0.102.151:3001/api/user/readUser  (to fetch password)
     http://65.0.102.151:3001/api/user/modifyUser    (to change password)
 
-admin
-    *adminAuth
+ADMIN
+
+adminAuth
+
     http://65.0.102.151:3001/api/auth/adminlogin
     http://65.0.102.151:3001/api/auth/adminlogout
 
-    *adminPrivilages
+    
+adminPrivilages
+
     http://65.0.102.151:3001/api/user/createuser
     http://65.0.102.151:3001/api/user/readUser
     http://65.0.102.151:3001/api/user/modifyUser
