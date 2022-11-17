@@ -1,4 +1,4 @@
-TO RUN PROJECT
+3**TO RUN PROJECT**
       STEP1: npm install
       STEP2: edit the ENV.js as per your environment
       STEP3: make a database with these tables
