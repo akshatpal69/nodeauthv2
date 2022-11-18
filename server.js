@@ -17,10 +17,10 @@ app.use("/api/user", useRoute);
 app.use("/api/auth/", authRoute);
 app.use("/", express.static(path.join(__dirname, "public")));
 
-// app.get("/", (req, res) => {
-//   console.log(req.session)
-//   res.send("/public/admin/login.html");
-// });
+app.get("/", (req, res) => {
+  console.log(req.session)
+  res.send("/public/admin/login.html");
+});
 
 // app.use(function (req, res, next) {
 //   return res.status(200).json({ ok: "home route, server.js " });
