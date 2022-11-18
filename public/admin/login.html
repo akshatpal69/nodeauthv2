@@ -31,7 +31,7 @@
   <script>
     function checkBiscuits() {
       if (document.cookie.length > 0) {
-        window.location.replace(`http://65.0.102.151:3001/admin`);
+        window.location.replace(`http://65.0.102.151:3001/admin`)
         //   let biscuits = {}
         //   const biscuitsArray = document.cookie.split(';')
         //   biscuitsArray.forEach((biscuit) => {
@@ -41,14 +41,14 @@
 
       }
     }
-    window.onload = checkBiscuits();
-    const log = document.getElementById("loginButton");
+    window.onload = checkBiscuits()
+    const log = document.getElementById("loginButton")
 
     log.addEventListener("click", async () => {
-      const admin = document.getElementById("adminname");
-      const pass = document.getElementById("password");
-      let adminname = admin.value;
-      let password = pass.value;
+      const admin = document.getElementById("adminname")
+      const pass = document.getElementById("password")
+      let adminname = admin.value
+      let password = pass.value
       const result = await fetch("http://65.0.102.151:3001/api/auth/adminlogin", {
         method: "POST",
         headers: {
@@ -58,20 +58,20 @@
           adminname,
           password,
         }),
-      }).then((res) => res.json());
+      }).then((res) => res.json())
       if (result.response == 'wrong adminname') {
         document.getElementById('loginStatus').innerHTML = 'wrong adminname'
       } if (result.response=='wrong password') { 
         document.getElementById('loginStatus').innerHTML = 'wrong password'
       }
       console.log(result)
-      localStorage.setItem("adminname", result.responseAdminname);
-      localStorage.setItem("name", result.responseName);
+      localStorage.setItem("adminname", result.responseAdminname)
+      localStorage.setItem("name", result.responseName)
 
       if (result.biscuitStatus == "alreadywed" || result.biscuitStatus == "newlywed") {
-        window.location.replace(`http://65.0.102.151:3001/admin`);
+        window.location.replace(`http://65.0.102.151:3001/admin`)
       }
-    });
+    })
   </script>
 </body>
 

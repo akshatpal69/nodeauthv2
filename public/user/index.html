@@ -38,24 +38,24 @@
         document.getElementById('localname').innerHTML = "Welcome "+localStorage.getItem("name")
         // localName = localStorage.getItem
       }if(document.cookie.length < 1){
-        window.location.replace(`http://65.0.102.151:3001/user/login.html`);
+        window.location.replace(`http://65.0.102.151:3001/user/login.html`)
       }
      
         console.log(document.cookie.length)
        
     }
-    window.onload = checkBiscuits();
-  let userid;
+    window.onload = checkBiscuits()
+  let userid
 
-  const status = document.getElementById("status");
-  const editPassword = document.getElementById("editPassword");
-  const uname = document.getElementById("username");
+  const status = document.getElementById("status")
+  const editPassword = document.getElementById("editPassword")
+  const uname = document.getElementById("username")
     uname.value=localStorage.getItem('username')
   // event at button
   document.getElementById('getUserbtn').addEventListener("click", async () => {
     
 
-    let username = uname.value;
+    let username = uname.value
     const result = await fetch("http://65.0.102.151:3001/api/user/readUser", {
       method: "POST",
       headers: {
@@ -64,28 +64,28 @@
       body: JSON.stringify({
         username,
       }),
-    }).then((res) => res.json());
+    }).then((res) => res.json())
 
-    userid = result.result[0].userid;
+    userid = result.result[0].userid
 
-    const fetchedusername = document.getElementById("fetchedusername");
-    const fetchedpassword = document.getElementById("fetchedpassword");
-    const fetchedname = document.getElementById("fetchedname");
-    fetchedusername.value = localStorage.getItem('username');
-    fetchedpassword.value = result.result[0].password;
-    fetchedname.value = localStorage.getItem('name');
+    const fetchedusername = document.getElementById("fetchedusername")
+    const fetchedpassword = document.getElementById("fetchedpassword")
+    const fetchedname = document.getElementById("fetchedname")
+    fetchedusername.value = localStorage.getItem('username')
+    fetchedpassword.value = result.result[0].password
+    fetchedname.value = localStorage.getItem('name')
 
-    console.log(result.result[0]);
-    console.log(userid);
-  });
+    console.log(result.result[0])
+    console.log(userid)
+  })
 
   // event at username input
 
   //event at password input
   editPassword.addEventListener("click", async () => {
-    const newPassword = document.getElementById("fetchedpassword");
+    const newPassword = document.getElementById("fetchedpassword")
 
-    let password = newPassword.value;
+    let password = newPassword.value
 
     const result = await fetch("http://65.0.102.151:3001/api/user/modifyUser", {
       method: "POST",
@@ -96,18 +96,18 @@
         userid,
         password
       }),
-    }).then((res) => res.json());
+    }).then((res) => res.json())
 
     status.innerHTML = result.result.info
-  });
+  })
 
   document.getElementById('logout').addEventListener('click', async () => {
     console.log('logoutclickec')
     const result = await fetch("http://65.0.102.151:3001/api/auth/userlogout", {
       method: "get",
-    }).then((res) => res.json());
+    }).then((res) => res.json())
     if (result.biscuitStatus !== 'err') {
-      window.location.replace(`http://65.0.102.151:3001/user/login.html`);
+      window.location.replace(`http://65.0.102.151:3001/user/login.html`)
     }
   })
 

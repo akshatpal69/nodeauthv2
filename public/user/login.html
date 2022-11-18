@@ -55,7 +55,7 @@
   <script>
     function checkBiscuits() {
       if (document.cookie.length > 0) {
-        window.location.replace(`http://65.0.102.151:3001/user`);
+        window.location.replace(`http://65.0.102.151:3001/user`)
       }
     //   if (document.cookie.length > 0) {
     //     let biscuits = {}
@@ -65,23 +65,23 @@
     //       biscuits[key] = value
     //     })
     //   }if(document.cookie.length < 1){
-    //     window.location.replace(`http://65.0.102.151:3001/user`);
+    //     window.location.replace(`http://65.0.102.151:3001/user`)
     //   }
     //  // if (Object.keys(biscuits)) {
     //     // console.log(Object.keys(document.cookie.length))
     //     // 
     //   //}
     }
-    window.onload = checkBiscuits();
-    const log = document.getElementById("loginButton");
-    const register = document.getElementById("register");
+    window.onload = checkBiscuits()
+    const log = document.getElementById("loginButton")
+    const register = document.getElementById("register")
 
     log.addEventListener("click", async () => {
-      const uname = document.getElementById("username");
-      const pass = document.getElementById("password");
+      const uname = document.getElementById("username")
+      const pass = document.getElementById("password")
 
-      let username = uname.value;
-      let password = pass.value;
+      let username = uname.value
+      let password = pass.value
       const result = await fetch("http://65.0.102.151:3001/api/auth/userlogin", {
         method: "POST",
         headers: {
@@ -97,35 +97,14 @@
       } if (result.response=='wrong password') { 
         document.getElementById('status').innerHTML = 'wrong password'
       }
-       localStorage.setItem("username", result.responseUsername);  
-       localStorage.setItem("name", result.responseName);  
+       localStorage.setItem("username", result.responseUsername)  
+       localStorage.setItem("name", result.responseName)  
 
       if (result.biscuitStatus == "alreadywed" || result.biscuitStatus == "newlywed") {
-        window.location.replace(`http://65.0.102.151:3001/user`);
+        window.location.replace(`http://65.0.102.151:3001/user`)
       }
-    });
+    })
 
-    // register.addEventListener("click", async () => {
-    //   const rUsername = document.getElementById("registerUsername");
-    //   const rPassword = document.getElementById("registerPassword");
-    //   const rName = document.getElementById("registerName");
-
-    //   let username = rUsername.value;
-    //   let password = rPassword.value;
-    //   let name = rName.value;
-
-    //   const result = await fetch("http://65.0.102.151:3001/api/user/createUser", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify({
-    //       username,
-    //       password,
-    //       name,
-    //     }),
-    //   }).then((res) => res.json());
-    // });
   </script>
 </body>
 

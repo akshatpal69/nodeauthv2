@@ -2,23 +2,16 @@
   "name": "nodeproject",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "serverauthv2.js",
   "scripts": {
-    "test": "nodemon server.js"
+    "test": "node serverauthv2.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "morgan": "^1.10.0",
-    "nodemon": "^2.0.20"
-  },
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.18.1",
-    "express-mysql-session": "^2.1.8",
-    "express-session": "^1.17.3",
-    "mysql": "^2.18.1",
     "mysql2": "^2.3.3"
   }
 }

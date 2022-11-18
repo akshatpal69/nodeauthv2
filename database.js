@@ -1,11 +1,8 @@
 let mysql = require("mysql2");
 const ENV = require("./env.js");
-const session =require('express-session')
-const MySQLStore = require("express-mysql-session")(session);
-
 
 let connection = mysql.createConnection({
-  host: ENV.SERVER_IP,
+  host: ENV.DB_SERVER,
   port: ENV.DB_PORT,
   user: ENV.DB_USER,
   password: ENV.DB_PASS,
@@ -17,7 +14,7 @@ connection.connect(function (err) {
     if (err.fatal == true) {
       console.log(`FATAL ERROR ${err.message}`);
       console.log(
-        `tried connection with ${ENV.SERVER_IP} at port ${ENV.DB_PORT} with database ${ENV.DB_NAME}`
+        `tried connection with ${ENV.DB_SERVER} at port ${ENV.DB_PORT} with database ${ENV.DB_NAME}`
       );
       console.log(`MYSQL SERVER NOT REACHABLE`);
     } else {
@@ -25,7 +22,7 @@ connection.connect(function (err) {
     }
   } else {
     console.log(
-      `Connected to ${ENV.SERVER_IP} at port ${ENV.DB_PORT} with database ${ENV.DB_NAME}`
+      `Connected to ${ENV.DB_SERVER} at port ${ENV.DB_PORT} with database ${ENV.DB_NAME}`
     );
   }
 });

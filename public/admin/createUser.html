@@ -41,29 +41,28 @@
         function checkBiscuits() {
             if (document.cookie.length > 0) {
                 console.log('ok admin')
-                // window.location.replace(`http://65.0.102.151:3001/admin`);
+                // window.location.replace(`http://65.0.102.151:3001/admin`)
                 //   let biscuits = {}
                 //   const biscuitsArray = document.cookie.split(';')
                 //   biscuitsArray.forEach((biscuit) => {
                 //     const [key, value] = biscuit.trim().split('=')
                 //     biscuits[key] = value
                 //   })
-
             } else {
-                window.location.replace(`http://65.0.102.151:3001/admin/login.html`);
+                window.location.replace(`http://65.0.102.151:3001/admin/login.html`)
             }
         }
-        window.onload = checkBiscuits();
+        window.onload = checkBiscuits()
 
         const register = document.getElementById("register")
         register.addEventListener("click", async () => {
-            const rUsername = document.getElementById("registerUsername");
-            const rPassword = document.getElementById("registerPassword");
-            const rName = document.getElementById("registerName");
+            const rUsername = document.getElementById("registerUsername")
+            const rPassword = document.getElementById("registerPassword")
+            const rName = document.getElementById("registerName")
 
-            let username = rUsername.value;
-            let password = rPassword.value;
-            let name = rName.value;
+            let username = rUsername.value
+            let password = rPassword.value
+            let name = rName.value
 
             const result = await fetch("http://65.0.102.151:3001/api/user/createUser", {
                 method: "POST",
@@ -75,13 +74,13 @@
                     password,
                     name,
                 }),
-            }).then((res) => res.json());
+            }).then((res) => res.json())
             if(result.result.affectedRows){
                 document.getElementById('status').innerHTML = 'inserted'
             }else{
                 document.getElementById('status').innerHTML = 'err'
             }
-        });
+        })
     </script>
 </body>
 
